@@ -2,6 +2,7 @@
 :root {
     --main-font: 'Inter-Variable';
     --accent-font: 'PressStart2P';
+    --width: clamp(23.188rem, 15.8598rem + 31.2669vw, 44rem);
     --main-font-weight: 400;
     --title-font-weight: 700;
     --bg-color: #fff;
