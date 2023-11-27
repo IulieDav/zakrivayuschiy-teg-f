@@ -39,6 +39,7 @@
 }
 
 .header__logo {
+  display: block;
   font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
   margin-block-start: clamp(7.5rem, 7.1479rem + 1.5023vw, 8.5rem);
   margin-block-end: 20px;
@@ -65,17 +66,49 @@
   background-color: transparent;
   font-size: 14px;
   text-transform: uppercase;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
 
 .theme-menu__button:disabled {
   opacity: 0.6;
+  pointer-events: none;
 }
 
-.theme-menu__button:disabled::after {
+.theme-menu__button:hover {
+  opacity: 0.6;
+}
+
+.theme-menu__button:focus {
+  outline: none;
+  opacity: 0.6;
+}
+
+.theme-menu__button::after {
+  content: '';
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: var(--accent-color);
+  transition: width 0.3s ease;
+}
+
+.theme-menu__button:focus-visible::after {
+  width: 100%;
+}
+
+.theme-menu__button:disabled::before {
   content: '▶';
   position: absolute;
   inset-inline-start: -18px;
   inset-block-start: 0;
+  animation: cursor 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes cursor {
+  to {
+      inset-inline-start: -14px;
+  }
 }
 
 .card {
@@ -92,6 +125,34 @@
   padding-block-start: 2px;
 }
 
+.lable-block {
+  position: relative;
+}
+
+.lable {
+  position: absolute;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  color: var(--accent-color);
+  inset-block-start: 30px;
+  inset-inline-end: 26px;
+  mix-blend-mode: hard-light;
+  opacity: 0.5;
+  text-shadow:
+    -1px 0 var(--bg-color), 
+   0 1px var(--bg-color), 
+   1px 0 var(--bg-color), 
+   0 -1px var(--bg-color);
+}
+
+@supports((text-stroke: 1px var(--bg-color)) or (-webkit-text-stroke: 1px var(--bg-color))) {
+  .lable {
+      -webkit-text-stroke: 1px var(--bg-color);
+      text-stroke: 1px var(--bg-color);
+      text-shadow: none;
+  }
+} 
+
 .card-image {
   display: block;
   inline-size: 100%;
@@ -105,7 +166,7 @@
 .card__paragraph {
   font-size: 18px;
   font-weight: 400;
-  margin-block-start: 27px;
+  margin-block-start: 24px;
   margin-inline: 25px;
 }
 
@@ -119,16 +180,17 @@
 .card__icon-button {
   border: none;
   background-color: transparent;
+  cursor: pointer;
+  transition: outline 0.3s ease;
 }
 
-.card__like-button {
-  font-family: var(--accent-font);
-  font-size: 14px;
-  line-height: 90%;
-  min-inline-size: 130px;
-  min-block-size: 38px;
-  background-color: transparent;
-  border: 2px solid var(--accent-color);
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: -2px;
 }
 
 .like-icon {
@@ -136,8 +198,46 @@
   margin-top: 3px;
 }
 
+.card__like-button {
+  position: relative;
+  font-family: var(--accent-font);
+  font-size: 14px;
+  line-height: 90%;
+  min-inline-size: 130px;
+  min-block-size: 38px;
+  background-color: transparent;
+  border: 2px solid var(--accent-color);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.card__like-button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.card__like-button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s ease-in-out;
+}
+
+.card__like-button:hover::after {
+  transform: scaleX(1);
+}
+
 .button__text {
   display: block;
+  position: relative;
+  z-index: 1;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
 }
 
 .footer {
@@ -149,6 +249,7 @@
 .footer__button {
   display: flex;
   gap: 6px;
+  position: relative;
   justify-content: center;
   align-items: center;
   inline-size: clamp(19.125rem, 18.4866rem + 2.7238vw, 20.938rem);
@@ -160,10 +261,37 @@
   line-height: 90%;
   background-color: var(--bg-color);
   border: 2px solid var(--accent-color);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.footer__button:focus {
+  outline: none;
+  box-shadow: 2px 2px 0 var(--accent-color);
+}
+
+.footer__button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  background-color: var(--accent-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.5s ease-in-out;
+}
+
+.footer__button:hover::after {
+  transform: scaleX(1);
 }
 
 .floppy {
   block-size: 21px;
+  position: relative;
+  z-index: 1;
+  color: var(--button-text-color);
+  mix-blend-mode: difference;
 }
 
 @media (width <= 375px) {
