@@ -156,7 +156,7 @@
   }
 }
 
-.card-image {
+.card__image {
   display: block;
   inline-size: 100%;
   block-size: 100%;
@@ -216,7 +216,7 @@
   max-block-size: 38px;
 }
 
-.button-animations {
+.button {
   position: relative;
   font-family: var(--accent-font), Arial;
   font-size: 14px;
@@ -227,12 +227,12 @@
   transition: box-shadow 0.3s ease;
 }
 
-.button-animations:focus {
+.button:focus {
   outline: none;
   box-shadow: 2px 2px 0 var(--accent-color);
 }
 
-.button-animations::after {
+.button::after {
   content: "";
   position: absolute;
   inline-size: 100%;
@@ -244,7 +244,7 @@
   transition: transform 0.5s ease-in-out;
 }
 
-.button-animations:hover::after {
+.button:hover::after {
   transform: scaleX(1);
 }
 
@@ -320,35 +320,35 @@ dialog::backdrop {
   align-self: center;
 }
 
-.brightness {
+.card__image-brightness {
   filter: brightness(60%);
 }
 
-.grayscale {
+.card__image-grayscale {
   filter: grayscale(0.8);
 }
 
-.saturate {
+.card__image-saturate {
   filter: saturate(70%);
 }
 
-.opacity {
+.card__image-opacity {
   filter: opacity(0.8) grayscale(0.9) hue-rotate(-15deg);
 }
 
-.sepia {
+.card__image-sepia {
   filter: sepia(80%);
 }
 
-.invert {
+.card__image-invert {
   filter: invert(0.2);
 }
 
-.blur {
+.card__image-blur {
   filter: blur(2px);
 }
 
-.hue-rotate {
+.card__image-hue-rotate {
   filter: hue-rotate(10deg);
 }
 
