@@ -137,8 +137,8 @@
   font-size: 14px;
   text-transform: uppercase;
   color: var(--accent-color);
-  inset-block-start: 30px;
-  inset-inline-end: 26px;
+  inset-block-start: 25px;
+  inset-inline-end: 25px;
   mix-blend-mode: hard-light;
   opacity: 0.5;
   text-shadow: -1px 0 var(--bg-color), 0 1px var(--bg-color),
@@ -167,24 +167,23 @@
   aspect-ratio: 1/1;
 }
 
+.card__description {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
 .card__paragraph {
   font-size: 18px;
   font-weight: 400;
-  margin-block-start: 27px;
-  margin-inline: 25px;
   line-height: 21px;
-}
-
-.card__paragraph + .card__paragraph {
-  margin-block-end: 88px;
 }
 
 .card__block-button {
   display: flex;
+  justify-content: flex-end;
   gap: 2px;
-  position: absolute;
-  inset-block-end: 25px;
-  inset-inline-end: 25px;
 }
 
 .card__icon-button {
@@ -248,7 +247,7 @@
   transform: scaleX(1);
 }
 
-.button-text {
+.button__text {
   display: block;
   position: relative;
   z-index: 1;
